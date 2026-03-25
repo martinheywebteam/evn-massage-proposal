@@ -23,7 +23,7 @@ tr[data-lang="en"]{display:none}html[lang="en"] tr[data-lang="en"]{display:table
 #gate .gb{width:100%;padding:14px;border:none;border-radius:12px;background:var(--accent-gradient);color:var(--white);font-family:'Montserrat',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;transition:opacity .25s,transform .2s;text-transform:uppercase;letter-spacing:.08em;opacity:0;animation:fadeUp .6s ease forwards .65s}#gate .gb:hover{opacity:.9;transform:translateY(-1px)}
 #gate .ge{color:#e74c3c;font-size:.78rem;margin-top:12px;min-height:20px;opacity:0;transition:opacity .3s}#gate .ge.show{opacity:1}
 #gate .glang{margin-top:32px;display:flex;gap:12px;justify-content:center;opacity:0;animation:fadeUp .6s ease forwards .75s}#gate .glang button{background:none;border:1px solid rgba(255,255,255,.1);color:var(--gray-400);font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:600;padding:6px 14px;border-radius:8px;cursor:pointer;transition:all .25s;letter-spacing:.06em}#gate .glang button:hover{color:var(--white);border-color:rgba(255,255,255,.2)}#gate .glang button.active{background:var(--blue);color:var(--white);border-color:var(--blue)}
-#gate .gf{margin-top:48px;font-size:.7rem;color:var(--gray-500);opacity:0;animation:fadeUp .6s ease forwards .85s}#gate .gf span{color:var(--blue)}#gate .gvc{margin-top:24px;font-size:.65rem;color:var(--gray-500);opacity:0;animation:fadeUp .6s ease forwards .95s}#gate .gvc img{height:20px;vertical-align:middle;margin-left:4px;border-radius:4px}#proposal{display:none}
+#gate .gf{margin-top:48px;font-size:.7rem;color:var(--gray-500);opacity:0;animation:fadeUp .6s ease forwards .85s}#gate .gf span{color:var(--blue)}#gate .gvc{margin-top:24px;font-size:.65rem;color:var(--gray-500);opacity:0;animation:fadeUp .6s ease forwards .95s}#gate .gvc span.vc{color:var(--blue);margin-left:4px}#proposal{display:none}
 .lang-switcher{position:fixed;top:68px;right:16px;z-index:101;display:flex;border-radius:20px;overflow:hidden;background:rgba(0,0,0,.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);box-shadow:0 4px 20px rgba(0,0,0,.4)}.lang-switcher button{background:none;border:none;color:var(--gray-400);font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:600;padding:6px 14px;cursor:pointer;transition:all .25s;letter-spacing:.06em;text-transform:uppercase}.lang-switcher button:hover{color:var(--white)}.lang-switcher button.active{background:var(--blue);color:var(--white)}
 .hero{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:center;padding:80px 60px;overflow:hidden;background:var(--black)}.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 600px at -5% 15%,rgba(75,90,160,.35) 0%,transparent 70%),radial-gradient(ellipse 500px 500px at 95% 90%,rgba(51,95,170,.4) 0%,transparent 70%);z-index:1}
 .arc-ring{position:absolute;top:-140px;left:-140px;width:420px;height:420px;border:55px solid;border-color:rgba(75,90,160,.5) rgba(51,95,170,.6) rgba(64,130,165,.4) rgba(75,90,160,.3);border-radius:50%;z-index:2;animation:ringRotate 25s linear infinite}@keyframes ringRotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
@@ -64,7 +64,8 @@ footer{text-align:center;padding:60px 40px 40px;background:var(--black);border-t
 <div class="ge" id="gateError"><span data-lang="mk">Погрешна лозинка.</span><span data-lang="en">Wrong password.</span></div>
 <div class="glang"><button class="active" onclick="setGateLang('mk')">MK</button><button onclick="setGateLang('en')">EN</button></div>
 <div class="gf"><span>Здравје.</span> <span>Превенција.</span> <span>Продуктивност.</span><br><span style="color:var(--gray-500)">www.myspa.mk</span></div>
-<div class="gvc"><span data-lang="mk">Посети</span><span data-lang="en">Visits</span><img src="https://hits.dwyl.com/martinheywebteam/evn-massage-proposal.svg?style=flat-square&show=unique" alt="visits"></div>
+<div class="gvc"><span data-lang="mk">Посети:</span><span data-lang="en">Visits:</span><span class="vc" id="visitCount">–</span></div>
+<img src="https://hits.dwyl.com/martinheywebteam/evn-massage-proposal.svg" alt="" style="display:none">
 </div></div>
 <div id="proposal">
 <div class="lang-switcher"><button class="active" onclick="setLang('mk')">MK</button><button onclick="setLang('en')">EN</button></div>
@@ -198,7 +199,7 @@ function setLang(l){document.documentElement.lang=l;document.querySelectorAll('.
 function setGateLang(l){document.documentElement.lang=l;document.querySelectorAll('#gate .glang button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active')}
 function checkPass(){var p=document.getElementById('gatePass').value;if(p==='evn2026'){document.getElementById('gate').style.display='none';document.getElementById('proposal').style.display='block'}else{document.getElementById('gateError').classList.add('show');document.getElementById('gatePass').value='';document.getElementById('gatePass').focus();setTimeout(function(){document.getElementById('gateError').classList.remove('show')},3000)}}
 document.getElementById('gatePass').focus();
-
+(function(){var el=document.getElementById('visitCount');fetch('https://api.counterapi.dev/v1/evn-massage-proposal/visits/up').then(function(r){return r.json()}).then(function(d){el.textContent=d.count}).catch(function(){})})();
 </script>
 </body>
 </html>
