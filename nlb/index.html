@@ -135,8 +135,8 @@ footer{text-align:center;padding:60px 40px 40px;background:var(--black);border-t
 <p class="body-text" data-lang="en"><em>*The bed option is only available if your office has a suitable space for setup.</em></p>
 
 <h3 class="sub-heading" data-lang="mk">Годишен договор — дополнителни погодности</h3><h3 class="sub-heading" data-lang="en">Annual Contract — Additional Benefits</h3>
-<div data-lang="mk"><ul class="styled-list"><li><strong>10% попуст</strong> на цената на ангажман</li><li><strong>Бесплатни работилници</strong> за правилно функционирање на работното место</li><li><strong>Бесплатни вежби</strong> за подобрување на работниот ден</li><li><strong>Дополнителен попуст</strong> на масажите во нашето студио во централно градско</li></ul></div>
-<div data-lang="en"><ul class="styled-list"><li><strong>10% discount</strong> on engagement rate</li><li><strong>Free workshops</strong> on proper workplace ergonomics</li><li><strong>Free exercise sessions</strong> for a better workday</li><li><strong>Additional discount</strong> on massages at our central-city studio</li></ul></div>
+<div data-lang="mk"><ul class="styled-list"><li><strong>Бесплатни работилници</strong> за правилно функционирање на работното место</li><li><strong>Бесплатни вежби</strong> за подобрување на работниот ден</li><li><strong>Дополнителен попуст</strong> на масажите во нашето студио во централно градско</li></ul></div>
+<div data-lang="en"><ul class="styled-list"><li><strong>Free workshops</strong> on proper workplace ergonomics</li><li><strong>Free exercise sessions</strong> for a better workday</li><li><strong>Additional discount</strong> on massages at our central-city studio</li></ul></div>
 
 <p class="tax-note" data-lang="mk">Цените се изразени во македонски денари. Во моментот на достава на понудата My Spa не е ДДВ обврзник. Доколку компанијата стане ДДВ обврзник, ќе се пресмета дополнителен 18% ДДВ согласно позитивните законски прописи на Република Северна Македонија.</p>
 <p class="tax-note" data-lang="en">Prices are in Macedonian Denars. At the time of submission, My Spa is not a VAT obligor. If the company becomes VAT-registered, an additional 18% VAT will apply in accordance with the laws of the Republic of North Macedonia.</p>
@@ -199,7 +199,7 @@ function setLang(l){document.documentElement.lang=l;document.querySelectorAll('.
 function setGateLang(l){document.documentElement.lang=l;document.querySelectorAll('#gate .glang button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active')}
 async function checkPass(){var p=document.getElementById('gatePass').value;var e=new TextEncoder();var d=await crypto.subtle.digest('SHA-256',e.encode(p));var h=Array.from(new Uint8Array(d)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');if(h==='1504998bdb2d2d4618d65402a13f429e9acc98bb0ba5e7010bb4c6615d4c2b44'){document.getElementById('gate').style.display='none';document.getElementById('proposal').style.display='block'}else{document.getElementById('gateError').classList.add('show');document.getElementById('gatePass').value='';document.getElementById('gatePass').focus();setTimeout(function(){document.getElementById('gateError').classList.remove('show')},3000)}}
 document.getElementById('gatePass').focus();
-(function(){var el=document.getElementById('visitCount');fetch('https://api.counterapi.dev/v1/nlb-massage-proposal/hits/up').then(function(r){return r.json()}).then(function(d){el.textContent=d.count}).catch(function(){})})();
+(function(){var el=document.getElementById('visitCount');fetch('https://api.counterapi.dev/v1/nlb-massage-proposal/views/up').then(function(r){return r.json()}).then(function(d){el.textContent=d.count}).catch(function(){})})();
 </script>
 </body>
 </html>
