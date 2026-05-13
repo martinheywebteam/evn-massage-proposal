@@ -12,6 +12,7 @@ Password-protected bilingual (MK/EN) corporate wellness proposals.
 |--------|------|----------|--------|
 | EVN Macedonia | [/evn](https://proposals.myspa.mk/evn) | `evn2026` | Live |
 | LIDL Macedonia | [/lidl](https://proposals.myspa.mk/lidl) | `lidl2026` | Draft |
+| NLB | [/nlb](https://proposals.myspa.mk/nlb) | `nlb2026` | Draft |
 
 ---
 
